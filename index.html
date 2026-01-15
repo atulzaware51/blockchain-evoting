@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced Blockchain-Secured E-Voting System - Transparent, Immutable, Tamper-Proof">
+    <meta name="keywords" content="blockchain, voting, e-voting, secure, transparent">
+    <meta name="author" content="BlockVote System">
+    <title>BlockVote | Blockchain E-Voting System</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Particle Canvas -->
+    <canvas class="bg-canvas" id="particleCanvas"></canvas>
+    
+    <!-- Navigation Bar -->
+    <div class="nav-container">
+        <nav class="navbar">
+            <div class="logo-section" onclick="navigateTo('landing')">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <div class="logo-text">BLOCKVOTE</div>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item active" onclick="navigateTo('landing')" data-view="landing">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </li>
+                <li class="nav-item" onclick="navigateTo('login')" data-view="login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </li>
+                <li class="nav-item" onclick="navigateTo('verify-vote')" data-view="verify-vote">
+                    <i class="fas fa-search-plus"></i>
+                    <span>Verify</span>
+                </li>
+                <li class="nav-item" onclick="navigateTo('college-demo')" data-view="college-demo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Demo</span>
+                </li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <ul class="sidebar-nav">
+            <li class="sidebar-item active" onclick="navigateTo('landing')" data-view="landing">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </li>
+            <li class="sidebar-item" onclick="navigateTo('login')" data-view="login">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Login</span>
+            </li>
+            <li class="sidebar-item" onclick="navigateTo('voter-dashboard')" data-view="voter-dashboard">
+                <i class="fas fa-vote-yea"></i>
+                <span>Cast Vote</span>
+            </li>
+            <li class="sidebar-item" onclick="navigateTo('profile')" data-view="profile">
+                <i class="fas fa-user-circle"></i>
+                <span>Profile</span>
+            </li>
+            <li class="sidebar-item" onclick="navigateTo('party-registration')" data-view="party-registration">
+                <i class="fas fa-flag"></i>
+                <span>Register Party</span>
+            </li>
+            <li class="sidebar-item" onclick="navigateTo('admin-dashboard')" data-view="admin-dashboard">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin Panel</span>
+            </li>
+            <li class="sidebar-item" onclick="navigateTo('college-demo')" data-view="college-demo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>College Demo</span>
+            </li>
+            <li class="sidebar-item" onclick="navigateTo('verify-vote')" data-view="verify-vote">
+                <i class="fas fa-search-plus"></i>
+                <span>Verify Vote</span>
+            </li>
+        </ul>
+    </aside>
+    
+    <!-- Toggle Sidebar Button -->
+    <button class="toggle-sidebar-btn" id="toggleSidebar" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        
+        <!-- 1. LANDING PAGE -->
+        <div class="view active" id="landing">
+            <div class="hero">
+                <h1 class="hero-title">BLOCKCHAIN VOTING SYSTEM</h1>
+                <p class="hero-subtitle">// SECURE • TRANSPARENT • IMMUTABLE //</p>
+                
+                <div class="hero-features">
+                    <div class="feature-badge">
+                        <i class="fas fa-lock feature-icon"></i>
+                        <span>SHA-256 Encrypted</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-database feature-icon"></i>
+                        <span>Decentralized Ledger</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <span>Tamper-Proof Records</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-check-double feature-icon"></i>
+                        <span>Verified Transactions</span>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="navigateTo('login')">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login Now</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="navigateTo('college-demo')">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>View Demo</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-value">10,000+</div>
+                    <div class="stat-label">Verified Voters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-value">500+</div>
+                    <div class="stat-label">Elections Conducted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="stat-value">99.9%</div>
+                    <div class="stat-label">System Uptime</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Security Rating</div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h2 class="section-title">Why Choose BlockVote?</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon blue">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3>Blockchain Technology</h3>
+                        <p>Every vote is recorded on an immutable blockchain ledger, ensuring complete transparency and preventing any tampering or manipulation.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon green">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3>Voter Authentication</h3>
+                        <p>Multi-factor authentication with OTP verification ensures only eligible voters can access the system and cast their votes.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon red">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Full Transparency</h3>
+                        <p>All transactions are publicly verifiable on the blockchain while maintaining voter anonymity and privacy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 2. LOGIN PAGE -->
+        <div class="view" id="login">
+            <div class="form-container">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-lock feature-icon"></i>
+                        <h2>SECURE LOGIN</h2>
+                        <p>Access your voting portal</p>
+                    </div>
+                    
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label class="form-label">Select Role</label>
+                            <select class="form-input" id="userRole" required>
+                                <option value="">Choose your role</option>
+                                <option value="voter">Voter</option>
+                                <option value="party">Political Party</option>
+                                <option value="conductor">Election Conductor</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email / Voter ID</label>
+                            <input type="text" class="form-input" id="email" placeholder="Enter your credentials" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send OTP</span>
+                        </button>
+                    </form>
+                    
+                    <p class="text-center mt-2 text-muted">
+                        New user? <a href="#" onclick="navigateTo('party-registration')" class="link-primary">Register as Party</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 3. OTP VERIFICATION -->
+        <div class="view" id="otp">
+            <div class="form-container">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-shield-halved feature-icon"></i>
+                        <h2>OTP VERIFICATION</h2>
+                        <p>Enter the 6-digit code sent to your email</p>
+                    </div>
+                    
+                    <div class="otp-group">
+                        <input type="text" class="otp-digit" maxlength="1" id="otp1" oninput="moveToNext(this, 'otp2')">
+                        <input type="text" class="otp-digit" maxlength="1" id="otp2" oninput="moveToNext(this, 'otp3')">
+                        <input type="text" class="otp-digit" maxlength="1" id="otp3" oninput="moveToNext(this, 'otp4')">
+                        <input type="text" class="otp-digit" maxlength="1" id="otp4" oninput="moveToNext(this, 'otp5')">
+                        <input type="text" class="otp-digit" maxlength="1" id="otp5" oninput="moveToNext(this, 'otp6')">
+                        <input type="text" class="otp-digit" maxlength="1" id="otp6">
+                    </div>
+                    
+                    <div class="timer-display">
+                        <i class="fas fa-clock"></i>
+                        <span id="otpTimer">01:30</span>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-block mb-2" onclick="verifyOTP()">
+                        <i class="fas fa-check"></i>
+                        <span>Verify OTP</span>
+                    </button>
+                    
+                    <button class="btn btn-secondary btn-block" onclick="resendOTP()">
+                        <i class="fas fa-redo"></i>
+                        <span>Resend OTP</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 4. PROFILE PAGE -->
+        <div class="view" id="profile">
+            <div class="form-container profile-container">
+                <div class="card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="profileName">John Doe</h2>
+                            <p class="text-muted" id="profileEmail">john.doe@email.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Role</span>
+                            <span class="detail-value" id="profileRole">Voter</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Voter ID</span>
+                            <span class="detail-value" id="profileVoterId">VID123456789</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Status</span>
+                            <span class="badge badge-success">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Registered On</span>
+                            <span class="detail-value">January 15, 2026</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary btn-block mt-3" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 5. VOTER DASHBOARD -->
+        <div class="view" id="voter-dashboard">
+            <div class="dashboard-header">
+                <h1>CAST YOUR VOTE</h1>
+                <div class="countdown-wrapper">
+                    <i class="fas fa-hourglass-half"></i>
+                    <span>Election Ends In: <span id="electionCountdown">04:12:45</span></span>
+                </div>
+            </div>
+            
+            <div class="candidates-grid" id="candidatesList">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- 6. VOTE CONFIRMATION -->
+        <div class="view" id="vote-confirmation">
+            <div class="success-container">
+                <div class="success-icon-wrapper">
+                    <i class="fas fa-check"></i>
+                </div>
+                
+                <h1 class="success-title">VOTE SUBMITTED SUCCESSFULLY!</h1>
+                <p class="success-subtitle">Your vote has been securely recorded on the blockchain</p>
+                
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <i class="fas fa-check-circle checklist-icon"></i>
+                        <span>Vote Encrypted with SHA-256</span>
+                    </div>
+                    <div class="checklist-item">
+                        <i class="fas fa-check-circle checklist-icon"></i>
+                        <span>Digital Signature Applied</span>
+                    </div>
+                    <div class="checklist-item">
+                        <i class="fas fa-check-circle checklist-icon"></i>
+                        <span>Added to Blockchain Ledger</span>
+                    </div>
+                </div>
+                
+                <div class="hash-container">
+                    <div class="hash-label">TRANSACTION HASH</div>
+                    <div class="hash-value" id="transactionHash">0x7f9fade1c0d57a7af66ab4ead7c2eb2b9a0ae1d6c2b3a4f5e6d7c8b9a0f1e2d3</div>
+                    <button class="copy-hash-btn" onclick="copyHash()">
+                        <i class="fas fa-copy"></i> COPY
+                    </button>
+                </div>
+                
+                <button class="btn btn-primary mt-3" onclick="navigateTo('voter-dashboard')">
+                    <i class="fas fa-home"></i>
+                    <span>Return to Dashboard</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 7. ADMIN DASHBOARD -->
+        <div class="view" id="admin-dashboard">
+            <h1 class="page-title">ADMIN CONTROL PANEL</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-value">156</div>
+                    <div class="stat-label">Total Voters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Pending Voters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-flag-checkered"></i>
+                    </div>
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Registered Parties</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Pending Parties</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Pending Approvals</h2>
+            <div class="data-table">
+                <div class="table-header">
+                    <div>Name</div>
+                    <div>Type</div>
+                    <div>Status</div>
+                    <div>Actions</div>
+                </div>
+                <div class="table-row">
+                    <div>Progressive Party</div>
+                    <div>Party</div>
+                    <div><span class="badge badge-warning">Pending</span></div>
+                    <div class="action-buttons">
+                        <button class="btn btn-success btn-sm" onclick="approveItem('Progressive Party')">
+                            <i class="fas fa-check"></i> Approve
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="rejectItem('Progressive Party')">
+                            <i class="fas fa-times"></i> Reject
+                        </button>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div>John Smith</div>
+                    <div>Voter</div>
+                    <div><span class="badge badge-warning">Pending</span></div>
+                    <div class="action-buttons">
+                        <button class="btn btn-success btn-sm" onclick="approveItem('John Smith')">
+                            <i class="fas fa-check"></i> Approve
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="rejectItem('John Smith')">
+                            <i class="fas fa-times"></i> Reject
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-3">
+                <span class="badge badge-success badge-lg">
+                    <i class="fas fa-circle pulse-icon"></i>
+                    Blockchain Status: Active
+                </span>
+            </div>
+        </div>
+        
+        <!-- 8. PARTY REGISTRATION -->
+        <div class="view" id="party-registration">
+            <div class="form-container">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-flag feature-icon"></i>
+                        <h2>PARTY REGISTRATION</h2>
+                        <p>Register your political party for the election</p>
+                    </div>
+                    
+                    <form onsubmit="handlePartyRegistration(event)">
+                        <div class="form-group">
+                            <label class="form-label">Party Name</label>
+                            <input type="text" class="form-input" id="partyName" placeholder="Enter party name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Candidate Name</label>
+                            <input type="text" class="form-input" id="candidateName" placeholder="Enter candidate name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Party Symbol</label>
+                            <select class="form-input" id="partySymbol" required>
+                                <option value="">Choose a symbol</option>
+                                <option value="fa-star">⭐ Star</option>
+                                <option value="fa-flag">🚩 Flag</option>
+                                <option value="fa-heart">❤️ Heart</option>
+                                <option value="fa-tree">🌲 Tree</option>
+                                <option value="fa-sun">☀️ Sun</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Contact Email</label>
+                            <input type="email" class="form-input" id="partyEmail" placeholder="party@email.com" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Submit for Approval</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 9. COLLEGE DEMO -->
+        <div class="view" id="college-demo">
+            <div class="dashboard-header">
+                <h1>COLLEGE ELECTION 2025</h1>
+                <p class="subtitle">Student Council Representative Election</p>
+                <span class="badge badge-warning badge-lg mt-2">
+                    <i class="fas fa-clock"></i> Party Registration Ongoing
+                </span>
+            </div>
+            
+            <div class="candidates-grid">
+                <div class="empty-state">
+                    <i class="fas fa-info-circle empty-icon"></i>
+                    <h3>No Parties Available Yet</h3>
+                    <p>Parties are currently registering for this election. Candidates will appear here once registration is complete.</p>
+                    <button class="btn btn-secondary mt-2" onclick="navigateTo('party-registration')">
+                        <i class="fas fa-flag"></i>
+                        <span>Register Your Party</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 10. VERIFY VOTE -->
+        <div class="view" id="verify-vote">
+            <div class="form-container">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-search-plus feature-icon"></i>
+                        <h2>VERIFY YOUR VOTE</h2>
+                        <p>Enter your transaction hash to verify on the blockchain</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Transaction Hash</label>
+                        <input type="text" class="form-input hash-input" id="verifyHash" placeholder="0x7f9fade1c0d57a7af66ab4ead7c2eb2b...">
+                    </div>
+                    
+                    <button class="btn btn-primary btn-block mb-3" onclick="verifyTransaction()">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Verify Transaction</span>
+                    </button>
+                    
+                    <div id="verifyResult" class="hidden">
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <i class="fas fa-check-circle checklist-icon"></i>
+                                <span>Transaction Found</span>
+                            </div>
+                            <div class="checklist-item">
+                                <i class="fas fa-check-circle checklist-icon"></i>
+                                <span>Vote Recorded on Block #45892</span>
+                            </div>
+                            <div class="checklist-item">
+                                <i class="fas fa-check-circle checklist-icon"></i>
+                                <span>Timestamp: 2026-01-15 14:32:18 UTC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    
+    <!-- OTP Modal Popup -->
+    <div class="otp-modal" id="otpModal">
+        <div class="otp-modal-content">
+            <div class="otp-modal-header">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>OTP Sent Successfully!</h3>
+            </div>
+            <div class="otp-modal-body">
+                <p>Your One-Time Password has been sent to:</p>
+                <p class="otp-email" id="otpEmailDisplay"></p>
+                <div class="otp-code-display">
+                    <span class="otp-label">Your OTP Code:</span>
+                    <span class="otp-code" id="otpCodeDisplay">123456</span>
+                </div>
+                <p class="otp-note">⚠️ This is a demo. In production, OTP will be sent to your email.</p>
+            </div>
+            <button class="btn btn-primary" onclick="closeOTPModal()">
+                <i class="fas fa-check"></i>
+                <span>Got It</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Election Configuration Modal (for Conductor) -->
+    <div class="otp-modal" id="electionConfigModal">
+        <div class="otp-modal-content" style="max-width: 600px;">
+            <div class="otp-modal-header">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Configure Election</h3>
+            </div>
+            <div class="otp-modal-body">
+                <form id="electionConfigForm" onsubmit="saveElectionConfig(event)">
+                    <div class="form-group">
+                        <label class="form-label">Election Name</label>
+                        <input type="text" class="form-input" id="electionName" placeholder="e.g., General Election 2026" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Start Date & Time</label>
+                        <input type="datetime-local" class="form-input" id="electionStartDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">End Date & Time</label>
+                        <input type="datetime-local" class="form-input" id="electionEndDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Select Approved Parties</label>
+                        <div id="partySelectionList" class="party-selection-list">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-save"></i>
+                        <span>Start Election</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Creator/Developer Footer -->
+    <footer class="creator-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Project Information</h4>
+                <p><strong>Project:</strong> Blockchain E-Voting System</p>
+                <p><strong>Type:</strong> Internship Project</p>
+                <p><strong>Year:</strong> 2026</p>
+            </div>
+            <div class="footer-section">
+                <h4>Developer Contact</h4>
+                <p><i class="fas fa-user"></i> <strong>Name:</strong> [Your Name]</p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> developer@blockvote.com</p>
+                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +91 XXXXX XXXXX</p>
+            </div>
+            <div class="footer-section">
+                <h4>Institution</h4>
+                <p><strong>College:</strong> [Your College Name]</p>
+                <p><strong>Department:</strong> Computer Science</p>
+                <p><strong>Internship Duration:</strong> Jan 2026 - Jun 2026</p>
+            </div>
+            <div class="footer-section">
+                <h4>Technologies Used</h4>
+                <p>• HTML5, CSS3, JavaScript</p>
+                <p>• Blockchain Simulation</p>
+                <p>• SHA-256 Encryption</p>
+                <p>• Responsive Design</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BlockVote System. Developed as an internship project.</p>
+            <p>Government of India | Election Commission</p>
+        </div>
+    </footer>
+    
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1524,6 +1524,371 @@ p {
     }
 }
 
+/* ===== ROLE SELECTION GRID ===== */
+.role-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin: var(--space-xl) auto;
+    max-width: 1000px;
+}
+
+.role-card {
+    background: var(--bg-card);
+    border: 2px solid var(--navy-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-2xl);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+.role-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-gold);
+}
+
+.role-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--gold-primary);
+}
+
+.role-card i {
+    font-size: 4rem;
+    color: var(--navy-primary);
+    margin-bottom: var(--space-md);
+}
+
+.role-card h3 {
+    font-size: 1.5rem;
+    color: var(--navy-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.role-card p {
+    color: var(--text-secondary);
+}
+
+/* ===== SECRET KEY BOX ===== */
+.secret-key-box {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: var(--gradient-navy);
+    padding: var(--space-md);
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--gold-primary);
+}
+
+.secret-key-box code {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    word-break: break-all;
+    line-height: 1.6;
+}
+
+.btn-copy-key {
+    background: var(--gold-primary);
+    color: var(--text-white);
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition-base);
+}
+
+.btn-copy-key:hover {
+    background: var(--gold-light);
+    transform: scale(1.1);
+}
+
+/* ===== TABS ===== */
+.tabs {
+    display: flex;
+    gap: var(--space-sm);
+    margin: var(--space-xl) 0 var(--space-lg);
+    border-bottom: 2px solid var(--navy-primary);
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: var(--space-md) var(--space-lg);
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-base);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.tab-btn:hover {
+    color: var(--navy-primary);
+    background: rgba(30, 58, 138, 0.05);
+}
+
+.tab-btn.active {
+    color: var(--gold-primary);
+    border-bottom-color: var(--gold-primary);
+}
+
+/* ===== NOTIFICATION BANNER ===== */
+.notification-banner {
+    background: var(--gradient-gold);
+    color: var(--text-white);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    box-shadow: var(--shadow-md);
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification-banner i {
+    font-size: 1.5rem;
+}
+
+.notification-banner span {
+    flex: 1;
+    font-weight: 600;
+}
+
+.notification-banner button {
+    background: transparent;
+    border: none;
+    color: var(--text-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 var(--space-sm);
+    transition: var(--transition-base);
+}
+
+.notification-banner button:hover {
+    transform: scale(1.2);
+}
+
+/* ===== APPROVAL TABLE ===== */
+.approval-table {
+    background: var(--bg-card);
+    border: 2px solid var(--navy-primary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: var(--space-lg) 0;
+}
+
+.approval-table-header {
+    background: var(--gradient-navy);
+    color: var(--text-white);
+    padding: var(--space-md);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+    gap: var(--space-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.approval-table-row {
+    padding: var(--space-md);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+    gap: var(--space-sm);
+    align-items: center;
+    border-bottom: 1px solid var(--bg-secondary);
+    transition: var(--transition-base);
+}
+
+.approval-table-row:hover {
+    background: var(--bg-secondary);
+}
+
+.approval-table-row:last-child {
+    border-bottom: none;
+}
+
+/* ===== ELECTION FORM ===== */
+.election-form {
+    background: var(--bg-card);
+    border: 2px solid var(--navy-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    margin: var(--space-lg) 0;
+}
+
+.party-checkbox-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 2px solid var(--navy-primary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm);
+    background: var(--bg-secondary);
+    margin: var(--space-md) 0;
+}
+
+.party-checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--bg-tertiary);
+    transition: var(--transition-base);
+}
+
+.party-checkbox-item:hover {
+    background: var(--bg-secondary);
+    border-color: var(--navy-primary);
+}
+
+.party-checkbox-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--navy-primary);
+}
+
+.party-checkbox-item label {
+    flex: 1;
+    cursor: pointer;
+    margin: 0;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ===== INFO BOX ===== */
+.info-box {
+    background: rgba(30, 58, 138, 0.1);
+    border: 2px solid var(--navy-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+}
+
+.info-box i {
+    color: var(--navy-primary);
+    font-size: 1.5rem;
+    margin-top: 0.2rem;
+}
+
+.info-box p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ===== VOTE RECORDS TABLE ===== */
+.vote-record-item {
+    background: var(--bg-card);
+    border: 1px solid var(--navy-primary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    margin-bottom: var(--space-sm);
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.vote-record-item:hover {
+    background: var(--bg-secondary);
+}
+
+.vote-timestamp {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.vote-hash {
+    font-family: var(--font-mono);
+    color: var(--green-primary);
+    font-size: 0.85rem;
+    word-break: break-all;
+}
+
+/* ===== ALREADY VOTED MESSAGE ===== */
+.already-voted-message {
+    background: rgba(185, 28, 28, 0.1);
+    border: 2px solid var(--red-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    text-align: center;
+    margin: var(--space-xl) auto;
+    max-width: 600px;
+}
+
+.already-voted-message i {
+    font-size: 4rem;
+    color: var(--red-primary);
+    margin-bottom: var(--space-md);
+}
+
+.already-voted-message h2 {
+    color: var(--red-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.already-voted-message p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+/* ===== NOT ELIGIBLE MESSAGE ===== */
+.not-eligible-message {
+    background: rgba(217, 119, 6, 0.1);
+    border: 2px solid var(--gold-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    text-align: center;
+    margin: var(--space-xl) auto;
+    max-width: 600px;
+}
+
+.not-eligible-message i {
+    font-size: 4rem;
+    color: var(--gold-primary);
+    margin-bottom: var(--space-md);
+}
+
+.not-eligible-message h2 {
+    color: var(--gold-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.not-eligible-message p {
+    color: var(--text-secondary);
+}
+
 /* ===== ANIMATIONS ===== */
 .pulse-icon {
     animation: pulse 2s ease-in-out infinite;
